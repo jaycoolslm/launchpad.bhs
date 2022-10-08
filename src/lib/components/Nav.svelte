@@ -21,7 +21,7 @@
 </nav>
 
 <style type="text/scss">
-    $min-width: calc(360px - 2 * 5.83vw);
+    $img-max-width: calc(360px - 2 * 5.83vw - 1945px);
     nav {
         width: 100vw;
         height: 120px;
@@ -38,7 +38,7 @@
         }
         @media screen and (max-width: 460px) {
             img {
-                max-width: calc($min-width - 194px);
+                max-width: $img-max-width;
             }
         }
 
