@@ -9,9 +9,9 @@ export default defineConfig({
       preprocess: autoPreprocess(),
     }),
   ],
-  // build: {
-  //   commonjsOptions: {
-  //     transformMixedEsModules: true
-  //   }
-  // }
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
+  }
 })
