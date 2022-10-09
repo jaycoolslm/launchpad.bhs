@@ -1,11 +1,35 @@
 <script>
+    import { onMount, onDestroy } from "svelte";
+    import accountStore from "../../accountStore";
     // Functions
     import mint from "../hashconnect/mint";
+    import pair from "../hashconnect/pair";
     // Assets
     import Discord from "../../assets/hero/Discord.svg";
     import web from "../../assets/hero/web.svg";
     import Twitter from "../../assets/hero/Twitter.svg";
     import a from "../../assets/nft/a.png";
+
+    import fetchRemaingSupply from "../mirrorNode/fetchRemaingSupply";
+    let nftSupply = 0;
+    let nftRemaining = 0;
+
+    const fetchNftInterval = setInterval(async () => {
+        nftRemaining = Number(await fetchRemaingSupply());
+    }, 2000);
+
+    onMount(async () => {
+        fetchNftInterval;
+        const res = await fetch(
+            `https://testnet.mirrornode.hedera.com/api/v1/tokens/48163190`
+        );
+        const data = await res.json();
+        nftSupply = data.total_supply;
+    });
+
+    onDestroy(() => {
+        clearInterval(fetchNftInterval);
+    });
 </script>
 
 <section>
@@ -55,16 +79,27 @@
         </div>
         <!-- MINT ACTIONS -->
         <div class="mint-actions">
-            <button on:click={mint}>Mint</button>
+            {#if nftRemaining && $accountStore}
+                <button on:click={mint}>Mint</button>
+            {:else if nftRemaining && !$accountStore}
+                <button on:click={pair}>Mint</button>
+            {:else}
+                <button style="opacity: 0.2; cursor: auto">Mint</button>
+            {/if}
             <div class="remaining-mints">
                 <div class="top">
-                    <div class="slider" />
+                    <div
+                        style={`width: ${
+                            100 - (nftRemaining * 100) / nftSupply
+                        }%;`}
+                        class="slider"
+                    />
                 </div>
                 <div class="bottom">
                     <p>Total Minted</p>
                     <p>
-                        <span>0%</span>
-                        (0/7777)
+                        <span>{100 - (nftRemaining * 100) / nftSupply}%</span>
+                        ({nftRemaining}/{nftSupply})
                     </p>
                 </div>
             </div>
@@ -246,7 +281,7 @@
                     padding: 19px 23px;
                     .top {
                         .slider {
-                            width: 100%;
+                            // width: 100%;
                             height: 4px;
                             background: #5858ff;
                             border-radius: 2px;
