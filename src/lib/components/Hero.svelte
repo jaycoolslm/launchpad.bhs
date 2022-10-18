@@ -1,6 +1,8 @@
 <script>
     import { onMount, onDestroy } from "svelte";
-    import accountStore from "../../accountStore";
+    import TxModal from "./TxModal.svelte";
+    import txStore from "../../stores/txStore";
+    import accountStore from "../../stores/accountStore";
     // Functions
     import mint from "../hashconnect/mint";
     import pair from "../hashconnect/pair";
@@ -11,6 +13,7 @@
     import a from "../../assets/nft/a.png";
 
     import fetchRemaingSupply from "../mirrorNode/fetchRemaingSupply";
+
     let nftSupply = 0;
     let nftRemaining = 0;
 
@@ -110,6 +113,10 @@
         <img src={a} alt="Bored Hash Club" />
     </div>
 </section>
+
+{#if $txStore}
+    <TxModal />
+{/if}
 
 <style type="text/scss">
     $min-width: calc(360px - 2 * 5.83vw);

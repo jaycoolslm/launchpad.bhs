@@ -1,5 +1,5 @@
 import hashconnect, { appMetadata } from "./hashconnect"
-import accountStore from '../../accountStore'
+import accountStore from '../../stores/accountStore'
 
 
 export default async () => {

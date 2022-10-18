@@ -1,6 +1,6 @@
 <script>
     // Stores
-    import accountStore from "../../accountStore";
+    import accountStore from "../../stores/accountStore";
     // Functions
     import pair from "../hashconnect/pair";
     import unpair from "../hashconnect/unpair";

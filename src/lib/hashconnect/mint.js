@@ -1,5 +1,6 @@
 import hashconnect, { appMetadata } from "./hashconnect"
-import accountStore from '../../accountStore'
+import accountStore from '../../stores/accountStore'
+import txStore from "../../stores/txStore";
 
 export default async () => {
     const initData = await hashconnect.init(appMetadata, 'testnet', false);
@@ -35,10 +36,17 @@ export default async () => {
 
     await hashconnect.sendTransaction(initData.topic, txData)
         .then((res) => {
+            if (!res.success) {
+                alert("Mint Failed!")
+                throw new Error("Mint failed!")
+            }
             console.log('res', res)
+            const { transactionId } = res.response
             unsubscribe()
+            txStore.set(transactionId)
         })
         .catch(err => {
             console.error(err)
+            txStore.set("")
         })
 }

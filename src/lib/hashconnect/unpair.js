@@ -1,4 +1,4 @@
-import accountStore from "../../accountStore";
+import accountStore from "../../stores/accountStore";
 
 export default () => {
     accountStore.set("")
