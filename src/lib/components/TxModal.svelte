@@ -59,9 +59,10 @@
         width: 100vw;
         max-width: 500px;
         min-height: 300px;
-        background: rgba(255, 255, 255, 0.06);
-        box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(10px);
+        background: #5858ff;
+        // background: rgba(255, 255, 255, 0.06);
+        // box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.12);
+        // backdrop-filter: blur(10px);
         /* Note: backdrop-filter has minimal browser support */
         border-radius: 16px;
         padding: 40px;
