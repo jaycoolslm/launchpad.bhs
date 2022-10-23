@@ -82,9 +82,9 @@
         </div>
         <!-- MINT ACTIONS -->
         <div class="mint-actions">
-            {#if nftRemaining && $accountStore}
+            {#if nftRemaining && $accountStore.accounts.length}
                 <button on:click={mint}>Mint</button>
-            {:else if nftRemaining && !$accountStore}
+            {:else if nftRemaining && !$accountStore.accounts.length}
                 <button on:click={pair}>Mint</button>
             {:else}
                 <button style="opacity: 0.2; cursor: auto">Mint</button>

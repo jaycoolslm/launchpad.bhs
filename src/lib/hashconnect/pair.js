@@ -3,13 +3,25 @@ import accountStore from '../../stores/accountStore'
 
 
 export default async () => {
-    const initData = await hashconnect.init(appMetadata, "testnet", false)
+    hashconnect.connectToLocalWallet();
+
+    let unsubscribe
+
     // send ping to wallet
-    hashconnect.foundExtensionEvent.once((walletMetadata) => {
-        hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata);
-    })
+    // hashconnect.foundExtensionEvent.once((walletMetadata) => {
+    //     hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata);
+    // })
     // handle pairing and sessionStorage structure
     hashconnect.pairingEvent.once((pairingData) => {
-        accountStore.set(pairingData.accountIds[0])
+        unsubscribe = accountStore.update(value => {
+            let updatedValue = value
+            pairingData.accountIds.forEach((id) => {
+                if (value.accounts.indexOf(id) === -1) {
+                    updatedValue.accounts.push(id)
+                }
+            })
+            updatedValue.active = 0
+            return updatedValue
+        })
     })
 }
