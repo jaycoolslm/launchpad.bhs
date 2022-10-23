@@ -88,7 +88,11 @@
             /></svg
         >
         <h3>Pair with HashPack</h3>
-        <button class="pos-action" on:click={pair}>One-click pair</button>
+        <button
+            class="pos-action"
+            on:click={() => pair().then(() => (pairingModal = false))}
+            >One-click pair</button
+        >
 
         <h3>Pair with pairing string</h3>
         <div style="display: flex; align-items: center; gap: 1em">

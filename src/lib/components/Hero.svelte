@@ -85,7 +85,7 @@
             {#if nftRemaining && $accountStore.accounts.length}
                 <button on:click={mint}>Mint</button>
             {:else if nftRemaining && !$accountStore.accounts.length}
-                <button on:click={pair}>Mint</button>
+                <button>Pair wallet</button>
             {:else}
                 <button style="opacity: 0.2; cursor: auto">Mint</button>
             {/if}
