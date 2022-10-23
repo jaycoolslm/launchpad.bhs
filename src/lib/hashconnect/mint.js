@@ -7,7 +7,7 @@ export default async () => {
 
     let buyer
     const unsubscribe = accountStore.subscribe(value => {
-        buyer = value
+        buyer = value.accounts[value.active]
     })
 
     console.log('buyer', buyer)
