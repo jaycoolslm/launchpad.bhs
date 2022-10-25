@@ -203,7 +203,7 @@
         width: 194px;
         height: 52px;
         /* Linear */
-        background-image: linear-gradient(94.44deg, #cccce9 0%, #f1e0ec 100%);
+
         border-radius: 26px;
         /* Connect Wallet */
         font-style: normal;
@@ -213,6 +213,43 @@
         /* identical to box height, or 16px */
         text-align: center;
         color: #1a0929;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(
+                94.44deg,
+                #cccce9 0%,
+                #f1e0ec 100%
+            );
+            border-radius: 10rem;
+            z-index: -2;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-image: linear-gradient(
+                94.44deg,
+                #7171cc 0%,
+                #c265a6 100%
+            );
+            transition: all 0.3s;
+            border-radius: 10rem;
+            z-index: -1;
+        }
+        &:hover::before {
+            width: 100%;
+        }
     }
 
     .neg-action {
