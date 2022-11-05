@@ -172,7 +172,8 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        background-color: #5858ff;
+        // background-color: #5858ff;
+        background-image: linear-gradient(94.44deg, #7171cc 0%, #c265a6 100%);
         z-index: 10;
         width: 90vw;
         padding: 1em;
@@ -194,6 +195,12 @@
         input {
             padding: 5px;
             border-radius: 3px;
+        }
+        button {
+            transition: color 0.5s ease;
+            &:hover {
+                color: white;
+            }
         }
     }
 
@@ -253,6 +260,7 @@
     }
 
     .neg-action {
+        transition: color 0.5s ease;
         /* Button */
         padding: 18px 32px;
         width: 194px;
@@ -268,5 +276,45 @@
         /* identical to box height, or 16px */
         text-align: center;
         color: #1a0929;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(
+                94.44deg,
+                #cccce9 0%,
+                #f1e0ec 100%
+            );
+            border-radius: 10rem;
+            z-index: -2;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-image: linear-gradient(
+                94.44deg,
+                #cc71af 0%,
+                #a13b3b 100%
+            );
+            transition: all 0.3s;
+            border-radius: 10rem;
+            z-index: -1;
+        }
+        &:hover {
+            color: white;
+        }
+        &:hover::before {
+            width: 100%;
+        }
     }
 </style>

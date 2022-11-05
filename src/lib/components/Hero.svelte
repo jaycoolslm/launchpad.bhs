@@ -1,6 +1,6 @@
 <script>
     import { onMount, onDestroy } from "svelte";
-    import TxModal from "./TxModal.svelte";
+    import TxModal from "./modals/TxModal.svelte";
     import txStore from "../../stores/txStore";
     import accountStore from "../../stores/accountStore";
     // Functions

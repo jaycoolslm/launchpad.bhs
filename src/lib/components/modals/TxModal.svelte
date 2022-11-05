@@ -1,10 +1,10 @@
 <script>
-    import txStore from "../../stores/txStore";
+    import txStore from "../../../stores/txStore";
 
     const seeTransaction = () => {
-        const transactiionId = $txStore;
+        const transactionId = $txStore;
         let targetUrl = "https://hashscan.io/#/testnet/transaction/";
-        for (let i in transactiionId) {
+        for (let i in transactionId) {
             if ($txStore[i] == "@") {
                 targetUrl += "-";
                 continue;
