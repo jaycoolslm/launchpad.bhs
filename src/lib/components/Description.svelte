@@ -58,15 +58,15 @@
         <div class="socials">
             <div>
                 <img src={web} alt="Bored Hash Club Website" />
-                <p>Website</p>
+                <a>Website</a>
             </div>
             <div>
                 <img src={Discord} alt="Bored Hash Club Discord" />
-                <p>Discord</p>
+                <a>Discord</a>
             </div>
             <div>
                 <img src={Twitter} alt="Bored Hash Club Twitter" />
-                <p>Twitter</p>
+                <a>Twitter</a>
             </div>
         </div>
         <div class="nft-info">
@@ -126,11 +126,21 @@
             // SOCIAL LINKS
             .socials {
                 display: flex;
-                align-items: center;
                 margin-bottom: 39px;
                 div {
                     display: flex;
                     margin-right: 26px;
+                    align-items: center;
+                    a {
+                        font-family: "Montserrat";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 100%;
+                        /* identical to box height, or 14px */
+                        cursor: pointer;
+                        color: #ffffff;
+                    }
                     img {
                         margin-right: 9px;
                     }
@@ -162,9 +172,8 @@
                 font-weight: 300;
                 font-size: 16px;
                 line-height: 100%;
-                /* or 16px */
-
                 color: #ffffff;
+                margin-bottom: 39px;
             }
         }
         // RIGHT / BOTTOM
