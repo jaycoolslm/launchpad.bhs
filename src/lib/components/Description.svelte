@@ -4,10 +4,11 @@
     import web from "../../assets/hero/web.svg";
     import Twitter from "../../assets/hero/Twitter.svg";
     import open from "../../assets/description/open.svg";
+    import { onMount } from "svelte";
 
     const nftId = "this";
 
-    export const roadmap = [
+    export const roadmapValues = [
         {
             title: "Q1 - 2023",
             para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
@@ -25,6 +26,30 @@
             para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
         },
     ];
+
+    let roadmapActive = true;
+    let roadmap, team;
+    onMount(() => {
+        roadmap = document.getElementById("roadmap");
+        team = document.getElementById("team");
+    });
+
+    const toggle = () => {
+        if (roadmap.classList.contains("active")) {
+            toggleClass();
+            roadmapActive = false;
+        } else {
+            toggleClass();
+            roadmapActive = true;
+        }
+    };
+
+    const toggleClass = () => {
+        roadmap.classList.toggle("active");
+        team.classList.toggle("active");
+        roadmap.classList.toggle("passive");
+        team.classList.toggle("passive");
+    };
 </script>
 
 <section>
@@ -57,14 +82,18 @@
     </div>
     <div class="text-2">
         <div class="toggle">
-            <button class="active">Roadmap</button>
-            <button class="passive">Team</button>
+            <button on:click={toggle} id="roadmap" class="active"
+                >Roadmap</button
+            >
+            <button on:click={toggle} id="team" class="passive">Team</button>
         </div>
         <div class="roadmap">
-            {#each roadmap as { title, para }}
-                <h3>{title}</h3>
-                <p>{para}</p>
-            {/each}
+            {#if roadmapActive}
+                {#each roadmapValues as { title, para }}
+                    <h3>{title}</h3>
+                    <p>{para}</p>
+                {/each}
+            {/if}
         </div>
     </div>
 </section>
