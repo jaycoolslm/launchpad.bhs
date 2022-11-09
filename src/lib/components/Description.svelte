@@ -58,20 +58,20 @@
         <div class="socials">
             <div>
                 <img src={web} alt="Bored Hash Club Website" />
-                <a>Website</a>
+                <a href="/">Website</a>
             </div>
             <div>
                 <img src={Discord} alt="Bored Hash Club Discord" />
-                <a>Discord</a>
+                <a href="/">Discord</a>
             </div>
             <div>
                 <img src={Twitter} alt="Bored Hash Club Twitter" />
-                <a>Twitter</a>
+                <a href="/">Twitter</a>
             </div>
         </div>
         <div class="nft-info">
             <img src={open} alt="Bored Hash Club NFT ID" />
-            <a href="#">{nftId}</a>
+            <a href="/">{nftId}</a>
         </div>
         <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
