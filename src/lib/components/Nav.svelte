@@ -123,7 +123,9 @@
     $img-max-width: calc(360px - 2 * 5.83vw - 1945px);
     svg {
         width: 20px;
-        background-image: linear-gradient(94.44deg, #cccce9 0%, #f1e0ec 100%);
+        background-color: var(--two);
+        color: var(--five);
+        // background-image: linear-gradient(94.44deg, #cccce9 0%, #f1e0ec 100%);
         border-radius: 3px;
         box-sizing: content-box;
         padding: 3px;
@@ -132,8 +134,8 @@
     nav {
         width: 100vw;
         height: 120px;
-        background: rgba(255, 255, 255, 0.06);
-        box-shadow: inset 0px -2px 2px rgba(255, 255, 255, 0.12);
+        background: var(--one);
+        // box-shadow: inset 0px -2px 2px rgba(255, 255, 255, 0.12);
         backdrop-filter: blur(30px);
         display: flex;
         align-items: center;
@@ -173,7 +175,11 @@
         top: 50%;
         transform: translate(-50%, -50%);
         // background-color: #5858ff;
-        background-image: linear-gradient(94.44deg, #7171cc 0%, #c265a6 100%);
+        background-image: linear-gradient(
+            94.44deg,
+            var(--three) 0%,
+            var(--four) 100%
+        );
         z-index: 10;
         width: 90vw;
         padding: 1em;
@@ -186,21 +192,21 @@
 
         h2,
         h3 {
-            background: linear-gradient(94.44deg, #cccce9 0%, #f1e0ec 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+            color: var(--five);
+            // background: linear-gradient(
+            //     94.44deg,
+            //     var(--five) 0%,
+            //     var(--two) 100%
+            // );
+            // -webkit-background-clip: text;
+            // -webkit-text-fill-color: transparent;
+            // background-clip: text;
+            // text-fill-color: transparent;
         }
         input {
             padding: 5px;
             border-radius: 3px;
-        }
-        button {
-            transition: color 0.5s ease;
-            &:hover {
-                color: white;
-            }
+            color: var(--five);
         }
     }
 
@@ -210,7 +216,7 @@
         width: 194px;
         height: 52px;
         /* Linear */
-
+        border: none;
         border-radius: 26px;
         /* Connect Wallet */
         font-style: normal;
@@ -219,10 +225,14 @@
         line-height: 100%;
         /* identical to box height, or 16px */
         text-align: center;
-        color: #1a0929;
+        color: var(--five);
         position: relative;
         overflow: hidden;
         z-index: 1;
+        transition: all 0.3s;
+        &:hover {
+            color: var(--one);
+        }
         &::after {
             content: "";
             position: absolute;
@@ -232,8 +242,8 @@
             height: 100%;
             background-image: linear-gradient(
                 94.44deg,
-                #cccce9 0%,
-                #f1e0ec 100%
+                var(--two) 0%,
+                var(--two) 100%
             );
             border-radius: 10rem;
             z-index: -2;
@@ -247,8 +257,8 @@
             height: 100%;
             background-image: linear-gradient(
                 94.44deg,
-                #7171cc 0%,
-                #c265a6 100%
+                var(--five) 0%,
+                var(--two) 100%
             );
             transition: all 0.3s;
             border-radius: 10rem;
@@ -275,7 +285,7 @@
         line-height: 100%;
         /* identical to box height, or 16px */
         text-align: center;
-        color: #1a0929;
+        color: var(--one);
         position: relative;
         overflow: hidden;
         z-index: 1;
@@ -288,8 +298,8 @@
             height: 100%;
             background-image: linear-gradient(
                 94.44deg,
-                #cccce9 0%,
-                #f1e0ec 100%
+                var(--five) 0%,
+                var(--five) 100%
             );
             border-radius: 10rem;
             z-index: -2;
@@ -303,8 +313,8 @@
             height: 100%;
             background-image: linear-gradient(
                 94.44deg,
-                #cc71af 0%,
-                #a13b3b 100%
+                var(--two) 0%,
+                var(--five) 100%
             );
             transition: all 0.3s;
             border-radius: 10rem;

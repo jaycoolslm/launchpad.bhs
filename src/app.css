@@ -1,3 +1,11 @@
+:root {
+  --one: #000;
+  --two: #3a3a39;
+  --three: #090909;
+  --four: #1b1b1b;
+  --five: #fcfcfa;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +15,7 @@
 }
 
 body {
-  background: #121220;
+  background: var(--one);
 }
 
 button {

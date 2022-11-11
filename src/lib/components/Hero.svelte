@@ -136,7 +136,11 @@
                 font-weight: 900;
                 font-size: 56px;
                 line-height: 100%;
-                background: linear-gradient(94.44deg, #cccce9 0%, #f1e0ec 100%);
+                background: linear-gradient(
+                    94.44deg,
+                    var(--five) 0%,
+                    var(--two) 100%
+                );
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
@@ -156,7 +160,7 @@
                 .tag-pink {
                     padding: 16px 28px;
                     background: rgba(255, 77, 130, 0.06);
-                    box-shadow: inset 0px 0px 2px 2px #ff4d82;
+                    box-shadow: inset 0px 0px 2px 2px var(--five);
                     border-radius: 16px;
                     // margin-right: 3px;
                     p {
@@ -165,7 +169,7 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 100%;
-                        color: #ff4d82;
+                        color: var(--two);
                     }
                 }
                 .tag {
@@ -215,7 +219,7 @@
                 // height: 88px;
                 margin: 6px 0;
                 padding: 22px 20px;
-                background: rgba(255, 255, 255, 0.06);
+                background: var(--five);
                 box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.12);
                 backdrop-filter: blur(10px);
                 /* Note: backdrop-filter has minimal browser support */
@@ -231,7 +235,7 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 100%;
-                        color: #ffffff;
+                        color: var(--three);
                     }
                     .pink {
                         font-family: "Montserrat";
@@ -239,17 +243,17 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 100%;
-                        color: #ff4d82;
+                        color: var(--two);
                     }
                 }
                 .bottom {
                     p {
                         font-family: "Montserrat";
                         font-style: normal;
-                        font-weight: 400;
+                        font-weight: 500;
                         font-size: 14px;
                         line-height: 100%;
-                        color: rgba(255, 255, 255, 0.5);
+                        color: var(--three);
                         text-align: justify;
                     }
                 }
