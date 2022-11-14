@@ -93,6 +93,8 @@
                     <h3>{title}</h3>
                     <p>{para}</p>
                 {/each}
+            {:else}
+                <h1>yeahhh</h1>
             {/if}
         </div>
     </div>
