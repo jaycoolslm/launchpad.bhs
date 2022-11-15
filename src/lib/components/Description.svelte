@@ -77,7 +77,7 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
             magni libero soluta minus maiores accusamus ipsam enim non quibusdam
             minima. Assumenda voluptatum beatae in ex perspiciatis blanditiis ab
-            vitae magni.
+            vitae magnii.
         </p>
     </div>
     <div class="text-2">
