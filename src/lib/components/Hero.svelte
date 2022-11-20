@@ -99,10 +99,10 @@
                     />
                 </div>
                 <div class="bottom">
-                    <p>Total Minted</p>
+                    <p><span>Total Minted</span></p>
                     <p>
-                        <span>{100 - (nftRemaining * 100) / nftSupply}%</span>
-                        ({nftRemaining}/{nftSupply})
+                        {100 - (nftRemaining * 100) / nftSupply}%
+                        <span>({nftRemaining}/{nftSupply})</span>
                     </p>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                 line-height: 100%;
                 margin-top: 36px;
                 margin-bottom: 16px;
-                color: #ffffff;
+                color: var(--five);
             }
             // MINT INFO CARD
             .mint-info-card {
@@ -219,7 +219,7 @@
                 // height: 88px;
                 margin: 6px 0;
                 padding: 22px 20px;
-                background: var(--five);
+                background: var(--four);
                 box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.12);
                 backdrop-filter: blur(10px);
                 /* Note: backdrop-filter has minimal browser support */
@@ -235,7 +235,7 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 100%;
-                        color: var(--three);
+                        color: var(--five);
                     }
                     .pink {
                         font-family: "Montserrat";
@@ -243,7 +243,7 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 100%;
-                        color: var(--two);
+                        color: var(--five);
                     }
                 }
                 .bottom {
@@ -253,7 +253,7 @@
                         font-weight: 500;
                         font-size: 14px;
                         line-height: 100%;
-                        color: var(--three);
+                        color: var(--five);
                         text-align: justify;
                     }
                 }
@@ -268,13 +268,13 @@
                     padding: 24px 40px;
                     width: 119px;
                     height: 64px;
-                    background: #5858ff;
+                    background: var(--five);
                     border-radius: 16px;
                     font-weight: 700;
                     font-size: 16px;
                     line-height: 100%;
                     text-align: center;
-                    color: #ffffff;
+                    color: var(--one);
                 }
                 .remaining-mints {
                     width: calc(100% - 122px);
@@ -294,7 +294,7 @@
                         .slider {
                             // width: 100%;
                             height: 4px;
-                            background: #5858ff;
+                            background: var(--five);
                             border-radius: 2px;
                         }
                     }
@@ -305,9 +305,9 @@
                             font-weight: 300;
                             font-size: 12px;
                             line-height: 100%;
-                            color: rgba(255, 255, 255, 0.5);
+                            color: var(--five);
                             span {
-                                color: #ffffff;
+                                opacity: 0.5 !important;
                             }
                         }
                     }

@@ -118,7 +118,11 @@
                 font-weight: 700;
                 font-size: 48px;
                 line-height: 100%;
-                background: linear-gradient(94.44deg, #cccce9 0%, #f1e0ec 100%);
+                background: linear-gradient(
+                    94.44deg,
+                    var(--five) 0%,
+                    var(--two) 100%
+                );
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
@@ -141,7 +145,7 @@
                         line-height: 100%;
                         /* identical to box height, or 14px */
                         cursor: pointer;
-                        color: #ffffff;
+                        color: var(--five);
                     }
                     img {
                         margin-right: 9px;
@@ -164,7 +168,7 @@
                     line-height: 100%;
                     /* identical to box height, or 16px */
 
-                    color: #ffffff;
+                    color: var(--five);
                 }
             }
             // DESCRIPTION
@@ -174,7 +178,7 @@
                 font-weight: 300;
                 font-size: 16px;
                 line-height: 100%;
-                color: #ffffff;
+                color: var(--five);
                 margin-bottom: 39px;
             }
         }
@@ -184,14 +188,14 @@
             max-width: 37.78vw;
             // BUTTONS
             .toggle {
-                background: rgba(255, 255, 255, 0.06);
+                background: var(--three);
                 border-radius: 23px;
                 display: inline-block;
                 margin-bottom: 48px;
                 .active {
                     padding: 16px 28px;
                     gap: 10px;
-                    background: #ffffff;
+                    background: var(--five);
                     border-radius: 23px;
                     font-family: "Montserrat";
                     font-style: normal;
@@ -212,7 +216,7 @@
                     font-size: 14px;
                     line-height: 100%;
                     text-align: center;
-                    color: rgba(255, 255, 255, 0.5);
+                    color: var(--two);
                 }
             }
             // ROADMAP
@@ -223,7 +227,7 @@
                     font-weight: 700;
                     font-size: 20px;
                     line-height: 100%;
-                    color: #ffffff;
+                    color: var(--five);
                     margin-bottom: 20px;
                 }
                 p {
@@ -232,7 +236,8 @@
                     font-weight: 300;
                     font-size: 16px;
                     line-height: 100%;
-                    color: rgba(255, 255, 255, 0.5);
+                    color: var(--five);
+                    opacity: 0.5;
                     margin-bottom: 34px;
                 }
             }
