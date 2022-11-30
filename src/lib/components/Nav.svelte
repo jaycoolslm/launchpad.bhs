@@ -216,7 +216,7 @@
         width: 194px;
         height: 52px;
         /* Linear */
-        border: none;
+        background-color: var(--two);
         border-radius: 26px;
         /* Connect Wallet */
         font-style: normal;
@@ -272,7 +272,7 @@
     .neg-action {
         transition: color 0.5s ease;
         /* Button */
-        padding: 18px 32px;
+        // padding: 18px 32px;
         width: 194px;
         height: 52px;
         /* Linear */
