@@ -77,7 +77,7 @@
 
 {#if pairingModal}
     <section id="pairing_modal">
-        <h2>Pair wallet</h2>
+        <h2>Pair your wallet</h2>
         <svg
             on:click={() => (pairingModal = false)}
             style="position: absolute; top: 1em; right: 1em"
