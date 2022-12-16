@@ -119,7 +119,7 @@
     </section>
 {/if}
 
-<style type="text/scss">
+<style lang="scss">
     $img-max-width: calc(360px - 2 * 5.83vw - 1945px);
     svg {
         width: 20px;

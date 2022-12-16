@@ -118,7 +118,7 @@
     <TxModal />
 {/if}
 
-<style type="text/scss">
+<style lang="scss">
     $min-width: calc(360px - 2 * 5.83vw);
     section {
         margin: 5.83vw;
