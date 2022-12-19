@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Buffer } from "buffer";
     import { onMount } from "svelte";
     import CopyClipBoard from "./utils/CopyClipBoard.svelte";
     import QRCode from "./utils/QRJS.svelte";
