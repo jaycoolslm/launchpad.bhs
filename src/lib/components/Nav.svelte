@@ -8,7 +8,10 @@
     // Assets
     import logo from "$lib/assets/logo.png";
 
+    $: console.log($accountStore.accounts[$accountStore.active]);
+
     let hashconnect: any, appMetadata: any, pair: any, unpair: any;
+
     export let pairingModal = false;
     let pairingString = "";
 
@@ -49,6 +52,18 @@
         }
         const initData = await hashconnect.init(appMetadata, network, false);
         pairingString = initData.pairingString;
+
+        hashconnect.pairingEvent.once((pairingData: any) => {
+            pairingData.accountIds.forEach((id: string) => {
+                if ($accountStore.accounts.indexOf(id) === -1) {
+                    let array = $accountStore.accounts;
+                    array.push(id);
+                    $accountStore.accounts = array;
+                    // $accountStore.accounts.push(id);
+                }
+            });
+            $accountStore.active = 0;
+        });
     });
 
     const openPairingModal = async () => {
@@ -67,14 +82,14 @@
         e.preventDefault();
         const accountOptions = e.target as HTMLSelectElement;
         for (let i = 0; i < accountOptions.length; i++) {
-            console.log(accountOptions[i].value);
             if (accountOptions[i].value == accountOptions.value) {
-                accountStore.update((prev: any) => {
-                    return {
-                        accounts: prev.accounts,
-                        active: i,
-                    };
-                });
+                $accountStore.active = i;
+                // accountStore.update((prev: any) => {
+                //     return {
+                //         accounts: prev.accounts,
+                //         active: i,
+                //     };
+                // });
             }
         }
     };

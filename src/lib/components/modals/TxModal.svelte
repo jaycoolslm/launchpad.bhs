@@ -3,7 +3,7 @@
 
     const seeTransaction = () => {
         const transactionId = $txStore;
-        let targetUrl = "https://hashscan.io/#/testnet/transaction/";
+        let targetUrl = "https://hashscan.io/testnet/transaction/";
         for (let i in transactionId) {
             if ($txStore[i] == "@") {
                 targetUrl += "-";
