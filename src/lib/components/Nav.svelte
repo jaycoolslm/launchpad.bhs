@@ -12,6 +12,7 @@
     let pairingString = "";
 
     onMount(async () => {
+        global.Buffer = Buffer;
         if (localStorage.getItem("hashconnectData")) {
             console.log(JSON.parse(localStorage.getItem("hashconnectData")!));
             const { pairingData } = JSON.parse(
