@@ -16,6 +16,8 @@
     let nftSupply = 0;
     let nftRemaining = 0;
 
+    export let pairingModal = false;
+
     const fetchNftInterval = setInterval(async () => {
         nftRemaining = Number(await fetchRemaingSupply());
     }, 2000);
@@ -23,7 +25,9 @@
     onMount(async () => {
         fetchNftInterval;
         const res = await fetch(
-            `https://testnet.mirrornode.hedera.com/api/v1/tokens/48163190`
+            `${import.meta.env.VITE_PUBLIC_MIRRORNODE}/api/v1/tokens/${
+                import.meta.env.VITE_PUBLIC_NFT_ID
+            }`
         );
         const data = await res.json();
         nftSupply = data.total_supply;
@@ -85,7 +89,9 @@
             {#if nftRemaining && $accountStore.accounts.length}
                 <button on:click={mint}>Mint</button>
             {:else if nftRemaining && !$accountStore.accounts.length}
-                <button>Pair wallet</button>
+                <button on:click={() => (pairingModal = true)}
+                    >Pair wallet</button
+                >
             {:else}
                 <button style="opacity: 0.2; cursor: auto">Mint</button>
             {/if}
@@ -101,8 +107,8 @@
                 <div class="bottom">
                     <p><span>Total Minted</span></p>
                     <p>
-                        {100 - (nftRemaining * 100) / nftSupply}%
-                        <span>({nftRemaining}/{nftSupply})</span>
+                        {Math.round(100 - (nftRemaining * 100) / nftSupply)}%
+                        <span>({nftSupply - nftRemaining}/{nftSupply})</span>
                     </p>
                 </div>
             </div>
@@ -265,7 +271,7 @@
                 justify-content: space-between;
 
                 button {
-                    padding: 24px 40px;
+                    // padding: 24px 40px;
                     width: 119px;
                     height: 64px;
                     background: var(--five);
@@ -275,6 +281,10 @@
                     line-height: 100%;
                     text-align: center;
                     color: var(--one);
+                    transition: all 0.7s ease;
+                    &:hover {
+                        box-shadow: 2px 2px 20px 0px #fff;
+                    }
                 }
                 .remaining-mints {
                     width: calc(100% - 122px);

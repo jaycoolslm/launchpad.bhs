@@ -8,7 +8,7 @@
     import logo from "$lib/assets/logo.png";
 
     let hashconnect: any, appMetadata: any, pair: any, unpair: any;
-    let pairingModal = false;
+    export let pairingModal = false;
     let pairingString = "";
 
     onMount(async () => {
@@ -32,11 +32,24 @@
             .appMetadata;
         pair = (await import("$lib/hashconnect/pair")).default;
         unpair = (await import("$lib/hashconnect/unpair")).default;
+
+        let network: string;
+        switch (import.meta.env.VITE_PUBLIC_MIRRORNODE) {
+            case "https://testnet.mirrornode.hedera.com":
+                network = "testnet";
+                break;
+            case "https://mainnet.mirrornode.hedera.com":
+                network = "mainnet";
+                break;
+            default:
+                network = "mainnet";
+                break;
+        }
+        const initData = await hashconnect.init(appMetadata, network, false);
+        pairingString = initData.pairingString;
     });
 
     const openPairingModal = async () => {
-        const initData = await hashconnect.init(appMetadata, "testnet", false);
-        pairingString = initData.pairingString;
         pairingModal = true;
     };
 

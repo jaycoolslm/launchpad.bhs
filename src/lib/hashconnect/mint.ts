@@ -10,9 +10,9 @@ export default async () => {
         buyer = value.accounts[value.active!]
     })
 
-    console.log('buyer', buyer)
+    console.log(buyer, 'buyer')
 
-    const res = await fetch('https://launchpad-serverbhs-production.up.railway.app/transaction', {
+    const res = await fetch('/api/buy-hbar', {
         method: 'POST',
         mode: 'cors',
         headers: {
