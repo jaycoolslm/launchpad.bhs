@@ -244,7 +244,6 @@
 
     .pos-action {
         /* Button */
-        padding: 18px 32px;
         width: 194px;
         height: 52px;
         /* Linear */

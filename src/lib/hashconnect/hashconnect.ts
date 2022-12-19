@@ -1,4 +1,4 @@
-import { HashConnect } from "hashconnect";
+import { HashConnect } from "hashconnect/dist/esm/main.js";
 
 export const appMetadata = {
     name: "dApp Example",
