@@ -105,7 +105,7 @@
                     />
                 </div>
                 <div class="bottom">
-                    <p><span>Total Minted</span></p>
+                    <p><span>Total Minted:</span></p>
                     <p>
                         {Math.round(100 - (nftRemaining * 100) / nftSupply)}%
                         <span>({nftSupply - nftRemaining}/{nftSupply})</span>
