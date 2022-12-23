@@ -13,24 +13,30 @@
 
     import fetchRemaingSupply from "../mirrorNode/fetchRemaingSupply";
     let mint: any;
-    let nftSupply = 0;
-    let nftRemaining = 0;
+    let hbarSupply = 50;
+    let bhcSupply = 10;
+    let hbarNftRemaining = 0;
+    let bhcNftRemaining = 0;
 
     export let pairingModal = false;
 
+    const hbarTreasury = import.meta.env.VITE_PUBLIC_HBAR_TREASURY_ID;
+    const bhcTreasury = import.meta.env.VITE_PUBLIC_BHC_TREASURY_ID;
     const fetchNftInterval = setInterval(async () => {
-        nftRemaining = Number(await fetchRemaingSupply());
+        hbarNftRemaining = Number(await fetchRemaingSupply(hbarTreasury));
+        bhcNftRemaining = Number(await fetchRemaingSupply(bhcTreasury));
+        console.log("hbar remaining", hbarNftRemaining);
     }, 2000);
 
     onMount(async () => {
         fetchNftInterval;
-        const res = await fetch(
-            `${import.meta.env.VITE_PUBLIC_MIRRORNODE}/api/v1/tokens/${
-                import.meta.env.VITE_PUBLIC_NFT_ID
-            }`
-        );
-        const data = await res.json();
-        nftSupply = data.total_supply;
+        // const res = await fetch(
+        //     `${import.meta.env.VITE_PUBLIC_MIRRORNODE}/api/v1/tokens/${
+        //         import.meta.env.VITE_PUBLIC_NFT_ID
+        //     }`
+        // );
+        // const data = await res.json();
+        // hbarSupply = data.total_supply;
         mint = (await import("$lib/hashconnect/mint")).default;
     });
 
@@ -66,7 +72,7 @@
             velit adipisicing ullamco dolore officia.
         </p>
         <!-- MINT INFO CARD -->
-        <div class="mint-info-card">
+        <!-- <div class="mint-info-card">
             <div class="top">
                 <p class="white">Whitelist</p>
                 <p class="pink">Ended</p>
@@ -83,19 +89,56 @@
             <div class="bottom">
                 <p>Max 2 Tokens | Price: ??? HBAR</p>
             </div>
+        </div> -->
+
+        <div class="remaining-mints" style="margin-bottom: 8px;">
+            <div class="top">
+                <div
+                    style={`width: ${
+                        100 - (hbarNftRemaining * 100) / hbarSupply
+                    }%;`}
+                    class="slider"
+                />
+            </div>
+            <div class="bottom">
+                <p><span>Total Minted with HBAR:</span></p>
+                <p>
+                    {Math.round(100 - (hbarNftRemaining * 100) / hbarSupply)}%
+                    <span>({hbarSupply - hbarNftRemaining}/{hbarSupply})</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="remaining-mints">
+            <div class="top">
+                <div
+                    style={`width: ${
+                        100 - (bhcNftRemaining * 100) / bhcSupply
+                    }%;`}
+                    class="slider"
+                />
+            </div>
+            <div class="bottom">
+                <p><span>Total Minted with BHC:</span></p>
+                <p>
+                    {Math.round(100 - (bhcNftRemaining * 100) / bhcSupply)}%
+                    <span>({bhcSupply - bhcNftRemaining}/{bhcSupply})</span>
+                </p>
+            </div>
         </div>
         <!-- MINT ACTIONS -->
         <div class="mint-actions">
-            {#if nftRemaining && $accountStore.accounts.length}
-                <button on:click={mint}>Mint</button>
-            {:else if nftRemaining && !$accountStore.accounts.length}
+            {#if hbarNftRemaining && $accountStore.accounts.length}
+                <button on:click={mint}>Mint HBAR</button>
+                <button on:click={mint}>Mint BHC</button>
+            {:else if hbarNftRemaining && !$accountStore.accounts.length}
                 <button on:click={() => (pairingModal = true)}
                     >Pair wallet</button
                 >
             {:else}
                 <button style="opacity: 0.2; cursor: auto">Mint</button>
             {/if}
-            <div class="remaining-mints">
+            <!-- <div class="remaining-mints">
                 <div class="top">
                     <div
                         style={`width: ${
@@ -111,7 +154,7 @@
                         <span>({nftSupply - nftRemaining}/{nftSupply})</span>
                     </p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- IMAGE CONTAINER -->
@@ -268,12 +311,9 @@
                 margin-top: 32px;
                 display: flex;
                 width: 100%;
-                justify-content: space-between;
 
                 button {
-                    // padding: 24px 40px;
-                    width: 119px;
-                    height: 64px;
+                    padding: 23px;
                     background: var(--five);
                     border-radius: 16px;
                     font-weight: 700;
@@ -282,44 +322,45 @@
                     text-align: center;
                     color: var(--one);
                     transition: all 0.7s ease;
+                    margin-right: 23px;
                     &:hover {
                         box-shadow: 2px 2px 20px 0px #fff;
                     }
                 }
-                .remaining-mints {
-                    width: calc(100% - 122px);
-                    margin-left: 3px;
-                    max-width: 390px;
-                    height: 64px;
-                    background: rgba(255, 255, 255, 0.06);
-                    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.12);
-                    backdrop-filter: blur(10px);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                    /* Note: backdrop-filter has minimal browser support */
-                    border-radius: 16px;
-                    padding: 19px 23px;
-                    .top {
-                        .slider {
-                            // width: 100%;
-                            height: 4px;
-                            background: var(--five);
-                            border-radius: 2px;
-                        }
-                    }
-                    .bottom {
-                        display: flex;
-                        justify-content: space-between;
-                        p {
-                            font-weight: 300;
-                            font-size: 12px;
-                            line-height: 100%;
-                            color: var(--five);
-                            span {
-                                opacity: 0.5 !important;
-                            }
-                        }
+            }
+        }
+
+        .remaining-mints {
+            width: calc(100% - 122px);
+            max-width: 390px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            /* Note: backdrop-filter has minimal browser support */
+            border-radius: 16px;
+            padding: 19px 23px;
+            .top {
+                .slider {
+                    // width: 100%;
+                    height: 4px;
+                    background: var(--five);
+                    border-radius: 2px;
+                }
+            }
+            .bottom {
+                display: flex;
+                justify-content: space-between;
+                p {
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 100%;
+                    color: var(--five);
+                    span {
+                        opacity: 0.5 !important;
                     }
                 }
             }

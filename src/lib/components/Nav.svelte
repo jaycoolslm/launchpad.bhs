@@ -8,8 +8,6 @@
     // Assets
     import logo from "$lib/assets/logo.png";
 
-    $: console.log($accountStore.accounts[$accountStore.active]);
-
     let hashconnect: any, appMetadata: any, pair: any, unpair: any;
 
     export let pairingModal = false;
