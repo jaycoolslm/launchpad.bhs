@@ -10,11 +10,11 @@
     import web from "$lib/assets/hero/web.svg";
     import Twitter from "$lib/assets/hero/Twitter.svg";
     import a from "$lib/assets/nft/a.png";
-
     import fetchRemaingSupply from "../mirrorNode/fetchRemaingSupply";
     let mint: any;
     let hbarSupply = 50;
     let bhcSupply = 10;
+    let hello = "hello";
     let hbarNftRemaining = 0;
     let bhcNftRemaining = 0;
 
