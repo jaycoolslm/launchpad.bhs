@@ -3,8 +3,6 @@
     import TxModal from "./modals/TxModal.svelte";
     import txStore from "$lib/stores/txStore";
     import accountStore from "$lib/stores/accountStore";
-    // Functions
-    // import mint from "../hashconnect/mint";
     // Assets
     import Discord from "$lib/assets/hero/Discord.svg";
     import web from "$lib/assets/hero/web.svg";
@@ -12,11 +10,10 @@
     import a from "$lib/assets/nft/a.png";
     import fetchRemaingSupply from "../mirrorNode/fetchRemaingSupply";
     let mint: any;
-    let hbarSupply = 50;
+    let hbarSupply = 40;
     let bhcSupply = 10;
-    let hello = "hello";
-    let hbarNftRemaining = 0;
-    let bhcNftRemaining = 0;
+    let hbarNftRemaining = 40;
+    let bhcNftRemaining = 10;
 
     export let pairingModal = false;
 
@@ -25,7 +22,6 @@
     const fetchNftInterval = setInterval(async () => {
         hbarNftRemaining = Number(await fetchRemaingSupply(hbarTreasury));
         bhcNftRemaining = Number(await fetchRemaingSupply(bhcTreasury));
-        console.log("hbar remaining", hbarNftRemaining);
     }, 2000);
 
     onMount(async () => {
@@ -129,8 +125,8 @@
         <!-- MINT ACTIONS -->
         <div class="mint-actions">
             {#if hbarNftRemaining && $accountStore.accounts.length}
-                <button on:click={mint}>Mint HBAR</button>
-                <button on:click={mint}>Mint BHC</button>
+                <button on:click={() => mint(false)}>Mint HBAR</button>
+                <button on:click={() => mint(true)}>Mint BHC</button>
             {:else if hbarNftRemaining && !$accountStore.accounts.length}
                 <button on:click={() => (pairingModal = true)}
                     >Pair wallet</button

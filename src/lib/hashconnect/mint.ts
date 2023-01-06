@@ -2,7 +2,7 @@ import hashconnect, { appMetadata } from "./hashconnect"
 import accountStore from '$lib/stores/accountStore'
 import txStore from "$lib/stores/txStore";
 
-export default async () => {
+export default async (bhc: boolean) => {
     const initData = await hashconnect.init(appMetadata, 'testnet', false);
 
     let buyer
@@ -12,7 +12,7 @@ export default async () => {
 
     console.log(buyer, 'buyer')
 
-    const res = await fetch('/api/buy-hbar', {
+    const res = await fetch(`/api/buy-${bhc ? "bhc" : "hbar"}`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -21,7 +21,7 @@ export default async () => {
         body: JSON.stringify({ buyer })
     })
 
-    const { bytes } = await res.json()
+    const bytes = await res.json()
     console.log(bytes, 'bytes')
 
     const txData = {

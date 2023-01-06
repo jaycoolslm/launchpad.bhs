@@ -9,5 +9,5 @@ export const POST = (async ({ request }) => {
         throw error(400, 'Bytes could not be generated');
     }
     console.log(bytes, 'bytes')
-    return json({ bytes });
+    return json(bytes);
 }) satisfies RequestHandler;

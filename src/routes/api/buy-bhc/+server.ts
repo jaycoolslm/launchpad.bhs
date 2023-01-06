@@ -3,8 +3,8 @@ import buildTx from '$lib/api/buildTx';
 import type { RequestHandler } from './$types';
 
 export const POST = (async ({ request }) => {
-    const { buyerId } = await request.json();
-    const bytes = await buildTx(buyerId, true);
+    const { buyer } = await request.json();
+    const bytes = await buildTx(buyer, true);
     if (!bytes) {
         throw error(400, 'Bytes could not be generated');
     }
